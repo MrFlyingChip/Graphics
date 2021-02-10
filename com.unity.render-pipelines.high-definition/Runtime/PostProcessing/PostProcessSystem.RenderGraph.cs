@@ -1089,6 +1089,8 @@ namespace UnityEngine.Rendering.HighDefinition
                     motionVectors = upsamplignSceneResults.motionVectors;
                 }
 
+                hdCamera.Schedule = HDCamera.CameraSchedule.PostProcessing;
+
                 source = CustomPostProcessPass(renderGraph, hdCamera, source, depthBuffer, normalBuffer, HDRenderPipeline.defaultAsset.beforeTAACustomPostProcesses, HDProfileId.CustomPostProcessBeforeTAA);
 
                 // Temporal anti-aliasing goes first
@@ -1131,6 +1133,8 @@ namespace UnityEngine.Rendering.HighDefinition
 */
                 hdCamera.resetPostProcessingHistory = false;
             }
+
+            hdCamera.Schedule = HDCamera.CameraSchedule.AfterPostProcessing;
 
             // Contrast Adaptive Sharpen Upscaling, which only works after post effects
             if (DynamicResolutionHandler.instance.schedulePolicy == DynamicResSchedulePolicy.AfterPost)
