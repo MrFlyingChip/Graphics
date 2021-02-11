@@ -1087,8 +1087,6 @@ namespace UnityEngine.Rendering.HighDefinition
                     source = upsamplignSceneResults.color;
                     depthBuffer = upsamplignSceneResults.depthBuffer;
                     motionVectors = upsamplignSceneResults.motionVectors;
-                    
-                    m_HDInstance.SetCameraRenderResolutionGroup(renderGraph, hdCamera, HDCamera.ResolutionGroup.Full);
                 }
 
                 source = CustomPostProcessPass(renderGraph, hdCamera, source, depthBuffer, normalBuffer, HDRenderPipeline.defaultAsset.beforeTAACustomPostProcesses, HDProfileId.CustomPostProcessBeforeTAA);
@@ -1119,6 +1117,7 @@ namespace UnityEngine.Rendering.HighDefinition
                 // This is one effect that would benefit from an overscan mode or supersampling in
                 // HDRP to reduce the amount of resolution lost at the center of the screen
                 source = PaniniProjectionPass(renderGraph, hdCamera, source);
+
                 TextureHandle bloomTexture = BloomPass(renderGraph, hdCamera, source);
                 TextureHandle logLutOutput = ColorGradingPass(renderGraph, hdCamera);
                 source = UberPass(renderGraph, hdCamera, logLutOutput, bloomTexture, source);
@@ -1135,7 +1134,6 @@ namespace UnityEngine.Rendering.HighDefinition
             if (DynamicResolutionHandler.instance.schedulePolicy == DynamicResSchedulePolicy.AfterPost)
             {
                 source = ContrastAdaptiveSharpeningPass(renderGraph, hdCamera, source);
-                //hdCamera.ActiveResolutionGroup = HDCamera.ResolutionGroup.Full;
             }
 
             FinalPass(renderGraph, hdCamera, afterPostProcessTexture, alphaTexture, finalRT, source, blueNoise, flipY);
