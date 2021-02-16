@@ -10,6 +10,13 @@ The following is a list of features Unity added to version 12 of the High Defini
 
 ## Improvements
 
+Dynamic Resolution Scale improvements:
+- Matching exposure and pixel to pixel quality for dynamic resolution scaling between software and hardware modes.
+- Fixing strange black edges on screen when in hardware more for dynamic resolution scaling.
+- Fixing strange artifacts when Lanczos filter is used on software dynamic resolution scaling.
+- Improved and fixed bugs with hardware dynamic resolution scaling utilizing the Contrast Adaptive Sharpen filter: results looked too pixelated when in hardware mode.
+
+
 ### AOV API Improvements
 
 From HDRP 12.0, The AOV API includes the following improvements
