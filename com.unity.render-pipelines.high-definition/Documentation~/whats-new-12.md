@@ -10,16 +10,17 @@ The following is a list of features Unity added to version 12 of the High Defini
 
 ## Improvements
 
-Dynamic Resolution Scale improvements:
-- Matching exposure and pixel to pixel quality for dynamic resolution scaling between software and hardware modes.
-- Fixing strange black edges on screen when in hardware more for dynamic resolution scaling.
-- Fixing strange artifacts when Lanczos filter is used on software dynamic resolution scaling.
-- Improved and fixed bugs with hardware dynamic resolution scaling utilizing the Contrast Adaptive Sharpen filter: results looked too pixelated when in hardware mode.
+### Dynamic Resolution Scale
+This version of HDRP introduces multiple improvements to Dynamic Resolution Scaling: 
+- The exposure and pixel to pixel quality now match between the software and hardware modes.
+- The rendering artifact that caused black edges to appear on screen when in hardware mode no longer occurs.
+- The rendering artifacts that appeared when using the Lanczos filter in software mode no longer occur.
+- Hardware mode now utilizes the Contrast Adaptive Sharpening filter to prevent the results from looking too pixelated. This uses FidelityFX (CAS) AMD™. For information about FidelityFX and Contrast Adaptive Sharpening, see [AMD FidelityFX](https://www.amd.com/en/technologies/radeon-software-fidelityfx).
 
 
-### AOV API Improvements
+### AOV API
 
-From HDRP 12.0, The AOV API includes the following improvements
+From HDRP 12.0, The AOV API includes the following improvements:
 - It is now possible to override the render buffer format that is used internally by HDRP when rendering **AOVs**. This can be done by a call to aovRequest.SetOverrideRenderFormat(true);
 - There is now a world space position output buffer (see DebugFullScreen.WorldSpacePosition).
 - The MaterialSharedProperty.Specular output now includes sensible information even for materials that use the metallic workflow (by converting the metallic parameter to fresnel 0).
