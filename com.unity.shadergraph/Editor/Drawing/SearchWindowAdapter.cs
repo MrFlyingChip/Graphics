@@ -18,7 +18,7 @@ namespace UnityEditor.ShaderGraph
             m_DefaultItemTemplate = Resources.Load<VisualTreeAsset>("SearcherItem");
         }
 
-        public override SearcherItem OnSearchResultsFilter(IEnumerable<SearcherItem> searchResults, string searchQuery)
+        /*public override SearcherItem OnSearchResultsFilter(IEnumerable<SearcherItem> searchResults, string searchQuery)
         {
             // Sort results by length so that shorter length results are prioritized
             // prevents entries with short names getting stuck at end of list after entries with longer names when both contain the same word
@@ -62,7 +62,7 @@ namespace UnityEditor.ShaderGraph
             }
 
             return scrollToItem;
-        }
+        }*/
     }
 
     internal class SearchNodeItem : SearcherItem
